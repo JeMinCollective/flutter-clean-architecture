@@ -3,22 +3,22 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:clean_architecture_template/common/const/preference_keys.dart';
 import 'package:clean_architecture_template/dependencies/dependency_manager.dart';
+import 'package:clean_architecture_template/features/landing/landing_config.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppBloc extends Cubit<AppState> {
   AppBloc() : super(AppState());
 
-  Future<void> initializeApp(
-    DependencyManager dependencyManager, {
-    Duration splashDuration = const Duration(seconds: 2),
-  }) async {
+  Future<void> initializeApp(LandingConfig config) async {
     emit(
       state.copyWith(initialized: false, error: null, showSplashScreen: true),
     );
 
-    // Splash screen duration (configurable by library consumer)
-    await Future.delayed(splashDuration);
+    // Splash screen duration (from config)
+    await Future.delayed(config.splashDuration);
+
+    final dependencyManager = config.dependencyManager;
 
     // to make sure dependencies were initialized well
     // before we proceed to the next screen

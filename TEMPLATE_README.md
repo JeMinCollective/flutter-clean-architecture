@@ -117,7 +117,16 @@ void main() async {
 
   await dependencyManager.init();
 
-  runApp(MyApp(dependencyManager: dependencyManager));
+  final landingConfig = LandingConfig(
+    dependencyManager: dependencyManager,
+    splashDuration: const Duration(seconds: 2),
+  );
+  runApp(MyApp(
+    landingConfig: landingConfig,
+    splashScreenBuilder: (context) => MySplashScreen(),
+    authenticatedBuilder: (context, authState) => MainScreen(),
+    unauthenticatedBuilder: (context) => OnboardingScreen(),
+  ));
 }
 ```
 
@@ -125,9 +134,18 @@ void main() async {
 
 ```dart
 class MyApp extends StatelessWidget {
-  final DependencyManager dependencyManager;
+  final LandingConfig landingConfig;
+  final Widget Function(BuildContext)? splashScreenBuilder;
+  final Widget Function(BuildContext, AuthenticationState) authenticatedBuilder;
+  final Widget Function(BuildContext) unauthenticatedBuilder;
 
-  const MyApp({required this.dependencyManager, super.key});
+  const MyApp({
+    required this.landingConfig,
+    required this.authenticatedBuilder,
+    required this.unauthenticatedBuilder,
+    this.splashScreenBuilder,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -140,10 +158,10 @@ class MyApp extends StatelessWidget {
         title: 'My App',
         theme: defaultStyle,
         home: LandingScreen(
-          dependencyManager: dependencyManager,
-          splashScreenBuilder: (context) => MySplashScreen(),
-          authenticatedBuilder: (context, authState) => MainScreen(),
-          unauthenticatedBuilder: (context) => OnboardingScreen(),
+          landingConfig: landingConfig,
+          splashScreenBuilder: splashScreenBuilder,
+          authenticatedBuilder: authenticatedBuilder,
+          unauthenticatedBuilder: unauthenticatedBuilder,
         ),
       ),
     );

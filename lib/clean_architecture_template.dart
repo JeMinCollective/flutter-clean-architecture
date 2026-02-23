@@ -80,6 +80,7 @@ export 'common/const/preference_keys.dart';
 export 'models/app_environment.dart';
 
 // Features
+export 'features/landing/landing_config.dart';
 export 'features/landing/landing_screen.dart';
 
 // Main app setup

@@ -1,6 +1,7 @@
 import 'package:clean_architecture_template/blocs/app/app_bloc.dart';
 import 'package:clean_architecture_template/blocs/authentication/authentication_bloc.dart';
 import 'package:clean_architecture_template/dependencies/dependency_manager.dart';
+import 'package:clean_architecture_template/features/landing/landing_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
@@ -8,36 +9,27 @@ import 'package:logger/logger.dart';
 /// Landing screen that handles app initialization and authentication flow.
 ///
 /// This screen manages the transition between splash screen, authentication,
-/// and the main app. Consuming apps must provide builders for authenticated
-/// and unauthenticated states.
+/// and the main app.
 ///
 class LandingScreen extends StatefulWidget {
-  final DependencyManager dependencyManager;
+  final LandingConfig landingConfig;
 
   /// Builder for the splash screen shown during app initialization.
   /// If null, shows an empty SizedBox.
   final Widget Function(BuildContext)? splashScreenBuilder;
 
-  /// Duration to display the splash screen before transitioning.
-  /// Defaults to 2 seconds.
-  final Duration splashDuration;
-
   /// Builder for the authenticated state.
-  /// Receives the current AuthenticationState.
-  /// Required - apps must provide their main authenticated UI.
   final Widget Function(BuildContext, AuthenticationState) authenticatedBuilder;
 
   /// Builder for the unauthenticated state.
-  /// Required - apps must provide their onboarding/login UI.
   final Widget Function(BuildContext) unauthenticatedBuilder;
 
   const LandingScreen({
     super.key,
-    required this.dependencyManager,
+    required this.landingConfig,
     required this.authenticatedBuilder,
     required this.unauthenticatedBuilder,
     this.splashScreenBuilder,
-    this.splashDuration = const Duration(seconds: 2),
   });
 
   @override
@@ -47,10 +39,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   @override
   void initState() {
-    context.read<AppBloc>().initializeApp(
-          widget.dependencyManager,
-          splashDuration: widget.splashDuration,
-        );
+    context.read<AppBloc>().initializeApp(widget.landingConfig);
     super.initState();
   }
 
