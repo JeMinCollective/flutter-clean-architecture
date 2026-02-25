@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:clean_architecture_template/common/styles/app_colors.dart';
 
 class DividerThemes {
@@ -15,4 +16,20 @@ class DividerThemes {
     thickness: 1.0,
     space: 16.0,
   );
+
+  static DividerThemeData scaled(double scale) {
+    return DividerThemeData(
+      color: CustomAppColors.gray4,
+      thickness: 1.0,
+      space: 24.0 * scale,
+    );
+  }
+
+  static DividerThemeData darkScaled(double scale) {
+    return DividerThemeData(
+      color: CustomAppColors.gray2,
+      thickness: 1.0,
+      space: 16.0 * scale,
+    );
+  }
 }

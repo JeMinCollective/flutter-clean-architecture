@@ -66,13 +66,51 @@ class AppSpacing {
       );
 
   /// Scale factor for tablet (1.25) and desktop (1.25). Mobile stays 1.0.
+  /// Deprecated: Use context.scaleFactor for proportional scaling instead.
   static double _scaleFactor(BuildContext context) {
     return context.isTablet || context.isDesktop ? 1.25 : 1.0;
   }
 
   /// Returns [value] scaled for tablet/desktop. Use for responsive spacing.
+  /// Deprecated: Prefer [scaleValue] with context.scaleFactor for proportional scaling.
   static double scale(BuildContext context, double value) {
     return value * _scaleFactor(context);
+  }
+
+  /// Returns [value] scaled by [scaleFactor] (from context.scaleFactor).
+  static double scaleValue(BuildContext context, double value) {
+    return value * context.scaleFactor;
+  }
+
+  /// Returns EdgeInsets.all with proportional scaling.
+  static EdgeInsets allScaled(BuildContext context, double value) {
+    return EdgeInsets.all(scaleValue(context, value));
+  }
+
+  /// Returns symmetric horizontal padding with proportional scaling.
+  static EdgeInsets horizontalScaled(BuildContext context, double value) {
+    return EdgeInsets.symmetric(horizontal: scaleValue(context, value));
+  }
+
+  /// Returns symmetric vertical padding with proportional scaling.
+  static EdgeInsets verticalScaled(BuildContext context, double value) {
+    return EdgeInsets.symmetric(vertical: scaleValue(context, value));
+  }
+
+  /// Returns EdgeInsets.only with proportional scaling.
+  static EdgeInsets onlyScaled(
+    BuildContext context, {
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
+    return EdgeInsets.only(
+      left: left * context.scaleFactor,
+      top: top * context.scaleFactor,
+      right: right * context.scaleFactor,
+      bottom: bottom * context.scaleFactor,
+    );
   }
 
   /// Returns EdgeInsets.all with responsive scaling on tablet.

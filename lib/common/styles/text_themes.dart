@@ -283,4 +283,59 @@ class TextThemes {
     letterSpacing: 1.5,
     color: CustomAppColors.gray3,
   );
+
+  /// Returns a TextTheme with all sizes scaled by [scale].
+  static TextTheme scaled(double scale) {
+    return TextTheme(
+      displayLarge: _scaleStyle(defaultStyle.displayLarge!, scale),
+      displayMedium: _scaleStyle(defaultStyle.displayMedium!, scale),
+      displaySmall: _scaleStyle(defaultStyle.displaySmall!, scale),
+      headlineLarge: _scaleStyle(defaultStyle.headlineLarge!, scale),
+      headlineMedium: _scaleStyle(defaultStyle.headlineMedium!, scale),
+      headlineSmall: _scaleStyle(defaultStyle.headlineSmall!, scale),
+      titleLarge: _scaleStyle(defaultStyle.titleLarge!, scale),
+      titleMedium: _scaleStyle(defaultStyle.titleMedium!, scale),
+      titleSmall: _scaleStyle(defaultStyle.titleSmall!, scale),
+      bodyLarge: _scaleStyle(defaultStyle.bodyLarge!, scale),
+      bodyMedium: _scaleStyle(defaultStyle.bodyMedium!, scale),
+      bodySmall: _scaleStyle(defaultStyle.bodySmall!, scale),
+      labelLarge: _scaleStyle(defaultStyle.labelLarge!, scale),
+      labelMedium: _scaleStyle(defaultStyle.labelMedium!, scale),
+      labelSmall: _scaleStyle(defaultStyle.labelSmall!, scale),
+    );
+  }
+
+  /// Returns dark TextTheme with all sizes scaled by [scale].
+  static TextTheme darkScaled(double scale) {
+    return TextTheme(
+      displayLarge: _scaleStyle(darkStyle.displayLarge!, scale),
+      displayMedium: _scaleStyle(darkStyle.displayMedium!, scale),
+      displaySmall: _scaleStyle(darkStyle.displaySmall!, scale),
+      headlineLarge: _scaleStyle(darkStyle.headlineLarge!, scale),
+      headlineMedium: _scaleStyle(darkStyle.headlineMedium!, scale),
+      headlineSmall: _scaleStyle(darkStyle.headlineSmall!, scale),
+      titleLarge: _scaleStyle(darkStyle.titleLarge!, scale),
+      titleMedium: _scaleStyle(darkStyle.titleMedium!, scale),
+      titleSmall: _scaleStyle(darkStyle.titleSmall!, scale),
+      bodyLarge: _scaleStyle(darkStyle.bodyLarge!, scale),
+      bodyMedium: _scaleStyle(darkStyle.bodyMedium!, scale),
+      bodySmall: _scaleStyle(darkStyle.bodySmall!, scale),
+      labelLarge: _scaleStyle(darkStyle.labelLarge!, scale),
+      labelMedium: _scaleStyle(darkStyle.labelMedium!, scale),
+      labelSmall: _scaleStyle(darkStyle.labelSmall!, scale),
+    );
+  }
+
+  static TextStyle _scaleStyle(TextStyle style, double scale) {
+    return style.copyWith(
+      fontSize: (style.fontSize ?? 14) * scale,
+      letterSpacing: style.letterSpacing != null
+          ? (style.letterSpacing! * scale)
+          : null,
+    );
+  }
+
+  /// Returns custom TextStyle scaled by [scale].
+  static TextStyle scaleCustom(TextStyle style, double scale) =>
+      _scaleStyle(style, scale);
 }

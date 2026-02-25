@@ -1,8 +1,10 @@
+import 'package:clean_architecture_template/common/styles/app_text_styles.dart';
 import 'package:clean_architecture_template/common/styles/divider_themes.dart';
 import 'package:clean_architecture_template/common/styles/dropdown_theme.dart';
 import 'package:clean_architecture_template/common/styles/floating_action_button_themes.dart';
 import 'package:clean_architecture_template/common/styles/input_decoration_themes.dart';
 import 'package:clean_architecture_template/common/styles/list_tile_themes.dart';
+import 'package:clean_architecture_template/common/scaling/scaled_theme_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clean_architecture_template/common/styles/app_bar_themes.dart';
@@ -14,6 +16,12 @@ import 'package:clean_architecture_template/common/styles/text_themes.dart';
 
 class AppThemes {
   const AppThemes._();
+
+  /// Builds a ThemeData with all dimensions scaled by [scale].
+  /// Use for proportional UI across mobile, tablet, and iPad.
+  static ThemeData buildScaled(double scale, {bool dark = false}) {
+    return ScaledThemeBuilder.buildScaled(scale, dark: dark);
+  }
 
   static final defaultStyle = ThemeData(
     brightness: Brightness.light,
@@ -45,7 +53,10 @@ class AppThemes {
     inputDecorationTheme: InputDecorationThemes.defaultStyle,
     floatingActionButtonTheme: FloatingActionButtonThemes.defaultStyle,
     listTileTheme: ListTileThemes.defaultStyle,
-    extensions: [AppColors.defaultStyle()],
+    extensions: [
+      AppColors.defaultStyle(),
+      AppTextStyles.light(1.0),
+    ],
     bottomAppBarTheme: const BottomAppBarThemeData(
       color: CustomAppColors.gray1,
     ),
@@ -79,7 +90,10 @@ class AppThemes {
     iconTheme: IconThemes.darkStyle,
     appBarTheme: AppBarThemes.darkStyle,
     inputDecorationTheme: InputDecorationThemes.darkStyle,
-    extensions: [AppColors.dark()],
+    extensions: [
+      AppColors.dark(),
+      AppTextStyles.dark(1.0),
+    ],
     colorScheme: ColorSchemes.darkStyle.copyWith(brightness: Brightness.dark),
   );
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:clean_architecture_template/common/extensions/responsive_extension.dart';
 import 'package:clean_architecture_template/common/styles/app_colors.dart';
 
 /// An elevated text field with shadow effect matching the Trackify design
@@ -59,20 +61,21 @@ class ElevatedInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = context.scaleFactor;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12 * scale),
         boxShadow: [
           BoxShadow(
             color: CustomAppColors.gray1.withValues(alpha: 0.08),
-            offset: const Offset(0, 2),
-            blurRadius: 8,
+            offset: Offset(0, 2 * scale),
+            blurRadius: 8 * scale,
             spreadRadius: 0,
           ),
           BoxShadow(
             color: CustomAppColors.gray1.withValues(alpha: 0.04),
-            offset: const Offset(0, 1),
-            blurRadius: 2,
+            offset: Offset(0, 1 * scale),
+            blurRadius: 2 * scale,
             spreadRadius: 0,
           ),
         ],
@@ -93,9 +96,9 @@ class ElevatedInputField extends StatelessWidget {
         autofocus: autofocus,
         initialValue: initialValue,
         inputFormatters: inputFormatters,
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: 'Figtree',
-          fontSize: 16,
+          fontSize: 16 * scale,
           fontWeight: FontWeight.w400,
           color: CustomAppColors.gray1,
         ),
@@ -251,6 +254,7 @@ class ElevatedSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = context.scaleFactor;
     return ElevatedInputField(
       controller: controller,
       hintText: hintText ?? 'Search...',
@@ -275,7 +279,7 @@ class ElevatedSearchField extends StatelessWidget {
         filled: true,
         fillColor: CustomAppColors.gray6,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12 * scale),
           borderSide: BorderSide.none,
         ),
       ),
