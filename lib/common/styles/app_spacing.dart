@@ -78,7 +78,10 @@ class AppSpacing {
     double value, {
     double scaleMultiplier = 1.0,
   }) {
-    return value * context.scaleFactor * scaleMultiplier;
+    if (context.isTablet || context.isDesktop) {
+      return value * context.scaleFactor * scaleMultiplier;
+    }
+    return value * scaleMultiplier;
   }
 
   /// Returns EdgeInsets.all with proportional scaling.
@@ -119,7 +122,10 @@ class AppSpacing {
     double value, {
     double scaleMultiplier = 1.0,
   }) {
-    return EdgeInsets.all(scale(context, value) * scaleMultiplier);
+    if (context.isTablet || context.isDesktop) {
+      return EdgeInsets.all(scale(context, value) * scaleMultiplier);
+    }
+    return EdgeInsets.all(value * scaleMultiplier);
   }
 
   /// Returns symmetric horizontal padding with responsive scaling.
