@@ -72,8 +72,13 @@ class AppSpacing {
   }
 
   /// Returns [value] scaled by [scaleFactor] (from context.scaleFactor).
-  static double scaleValue(BuildContext context, double value) {
-    return value * context.scaleFactor;
+  /// Use [scaleMultiplier] to increase or decrease the result (e.g. 1.25 for 25% more).
+  static double scaleValue(
+    BuildContext context,
+    double value, {
+    double scaleMultiplier = 1.0,
+  }) {
+    return value * context.scaleFactor * scaleMultiplier;
   }
 
   /// Returns EdgeInsets.all with proportional scaling.
@@ -108,8 +113,13 @@ class AppSpacing {
   }
 
   /// Returns EdgeInsets.all with responsive scaling on tablet.
-  static EdgeInsets allResponsive(BuildContext context, double value) {
-    return EdgeInsets.all(scale(context, value));
+  /// Use [scaleMultiplier] to increase or decrease padding (e.g. 1.25 for 25% more).
+  static EdgeInsets allResponsive(
+    BuildContext context,
+    double value, {
+    double scaleMultiplier = 1.0,
+  }) {
+    return EdgeInsets.all(scale(context, value) * scaleMultiplier);
   }
 
   /// Returns symmetric horizontal padding with responsive scaling.
