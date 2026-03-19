@@ -1,167 +1,134 @@
 import 'package:flutter/material.dart';
-import 'package:clean_architecture_template/common/styles/app_colors.dart';
 
-/// Text themes using Figtree font family
-/// Organized by usage patterns from the Trackify app design
+import 'package:clean_architecture_template/common/styles/app_colors.dart';
+import 'package:clean_architecture_template/common/styles/tokens/typography_tokens.dart';
+
+/// Text themes using Figtree font family and TypographyTokens.
+/// Aligned with Figma Design System typography specifications.
 class TextThemes {
   const TextThemes._();
 
-  // Base font family
-  static const String _fontFamily = 'Figtree';
-
+  /// Letter spacing per Figma Typography Tokens:
+  /// Tighter=-0.8, Tight=-0.4, Normal=0, Wide=0.4, Wider=0.8, Widest=1.6
   static final defaultStyle = TextTheme(
-    // Display styles - Hero headlines
-    // Usage: Main landing page headline "Easier, Safer, faster. That's Trackify."
-    displayLarge: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w700, // Bold
-      fontSize: 36,
+    displayLarge: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.bold],
+      fontSize: fontSizeValues[FontSizeToken.x4l],
       height: 1.2,
-      letterSpacing: -0.5,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.tighter],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Large hero text variations
-    displayMedium: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w700, // Bold
-      fontSize: 32,
+    displayMedium: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.bold],
+      fontSize: fontSizeValues[FontSizeToken.x3l],
       height: 1.25,
-      letterSpacing: -0.25,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.tight],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Section headlines, page titles
-    displaySmall: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w700, // Bold
-      fontSize: 28,
+    displaySmall: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.bold],
+      fontSize: fontSizeValues[FontSizeToken.x2l],
       height: 1.3,
-      letterSpacing: 0,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.tight],
       color: CustomAppColors.gray1,
     ),
-
-    // Headline styles - Page and section titles
-    // Usage: Page title "Choose Your Business"
-    headlineLarge: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w700, // Bold
-      fontSize: 24,
+    headlineLarge: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.bold],
+      fontSize: fontSizeValues[FontSizeToken.xl],
       height: 1.3,
-      letterSpacing: 0,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.tight],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Section headers, dialog titles
-    headlineMedium: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 20,
+    headlineMedium: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.lg],
       height: 1.4,
-      letterSpacing: 0,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Card titles, subsection headers
-    headlineSmall: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 18,
+    headlineSmall: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.md],
       height: 1.4,
-      letterSpacing: 0,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Title styles - Component titles
-    // Usage: List item titles "Outback Freight Solutions"
-    titleLarge: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 16,
+    titleLarge: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.base],
       height: 1.5,
-      letterSpacing: 0.15,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Card headers, drawer items
-    titleMedium: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 15,
+    titleMedium: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.sm],
       height: 1.5,
-      letterSpacing: 0.15,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Small component titles
-    titleSmall: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 14,
+    titleSmall: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.sm],
       height: 1.5,
-      letterSpacing: 0.1,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Body styles - Primary content text
-    // Usage: Input field text, main content
-    bodyLarge: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w400, // Regular
-      fontSize: 16,
+    bodyLarge: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.regular],
+      fontSize: fontSizeValues[FontSizeToken.base],
       height: 1.5,
-      letterSpacing: 0.25,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Descriptions "You're associated with multiple businesses..."
-    bodyMedium: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w400, // Regular
-      fontSize: 14,
+    bodyMedium: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.regular],
+      fontSize: fontSizeValues[FontSizeToken.sm],
       height: 1.6,
-      letterSpacing: 0.25,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray2,
     ),
-
-    // Usage: Captions, hints, helper text "The Fleet Management System..."
-    bodySmall: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w400, // Regular
-      fontSize: 13,
+    bodySmall: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.regular],
+      fontSize: fontSizeValues[FontSizeToken.sm],
       height: 1.6,
-      letterSpacing: 0.25,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray2,
     ),
-
-    // Label styles - UI component labels and buttons
-    // Usage: Button text "Log In", "Continue to Dashboard"
-    labelLarge: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 16,
+    labelLarge: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.base],
       height: 1.4,
-      letterSpacing: 0.1,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.white,
     ),
-
-    // Usage: Input labels "EMAIL", "PASSWORD", secondary buttons
-    labelMedium: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w600, // SemiBold
-      fontSize: 14,
+    labelMedium: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.semibold],
+      fontSize: fontSizeValues[FontSizeToken.sm],
       height: 1.4,
-      letterSpacing: 0.5,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray1,
     ),
-
-    // Usage: Small labels, tags, list subtitles "OBFS-2319"
-    labelSmall: const TextStyle(
-      fontFamily: _fontFamily,
-      fontWeight: FontWeight.w400, // Regular
-      fontSize: 12,
+    labelSmall: TextStyle(
+      fontFamily: fontValues[FontToken.defaultFont],
+      fontWeight: fontWeightValues[FontWeightToken.regular],
+      fontSize: fontSizeValues[FontSizeToken.xs],
       height: 1.5,
-      letterSpacing: 0.5,
+      letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
       color: CustomAppColors.gray3,
     ),
   );
@@ -203,84 +170,138 @@ class TextThemes {
   // Custom text styles for specific use cases
 
   /// Link text style - "Forgot Password?", "Contact Support"
-  static const TextStyle link = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w400,
-    fontSize: 14,
+  static TextStyle get link => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.regular],
+    fontSize: fontSizeValues[FontSizeToken.sm],
     height: 1.5,
-    letterSpacing: 0.1,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
     color: CustomAppColors.primary,
     decoration: TextDecoration.none,
   );
 
   /// Link text style (bold variant)
-  static const TextStyle linkBold = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
+  static TextStyle get linkBold => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.semibold],
+    fontSize: fontSizeValues[FontSizeToken.sm],
     height: 1.5,
-    letterSpacing: 0.1,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
     color: CustomAppColors.primary,
     decoration: TextDecoration.none,
   );
 
   /// Input field placeholder text
-  static const TextStyle placeholder = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
+  static TextStyle get placeholder => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.regular],
+    fontSize: fontSizeValues[FontSizeToken.base],
     height: 1.5,
-    letterSpacing: 0.25,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
     color: CustomAppColors.gray3,
   );
 
   /// Footer text - "© Trackify • Android V3.2.2"
-  static const TextStyle footer = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w400,
-    fontSize: 12,
+  static TextStyle get footer => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.regular],
+    fontSize: fontSizeValues[FontSizeToken.xs],
     height: 1.5,
-    letterSpacing: 0.25,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.normal],
     color: CustomAppColors.gray3,
   );
 
   /// Button text - Primary
-  static const TextStyle buttonPrimary = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: 16,
+  static TextStyle get buttonPrimary => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.semibold],
+    fontSize: fontSizeValues[FontSizeToken.base],
     height: 1.25,
-    letterSpacing: 0.1,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.wide],
     color: CustomAppColors.white,
   );
 
   /// Button text - Secondary
-  static const TextStyle buttonSecondary = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w500,
-    fontSize: 16,
+  static TextStyle get buttonSecondary => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.medium],
+    fontSize: fontSizeValues[FontSizeToken.base],
     height: 1.25,
-    letterSpacing: 0.1,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.wide],
     color: CustomAppColors.gray1,
   );
 
   /// Input label - Uppercase style
-  static const TextStyle inputLabel = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: 12,
+  static TextStyle get inputLabel => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.semibold],
+    fontSize: fontSizeValues[FontSizeToken.xs],
     height: 1.5,
-    letterSpacing: 1.0,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.widest],
     color: CustomAppColors.gray1,
   );
 
   /// Overline text - Used for categories, tags
-  static const TextStyle overline = TextStyle(
-    fontFamily: _fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: 11,
+  static TextStyle get overline => TextStyle(
+    fontFamily: fontValues[FontToken.defaultFont],
+    fontWeight: fontWeightValues[FontWeightToken.semibold],
+    fontSize: fontSizeValues[FontSizeToken.xs],
     height: 1.5,
-    letterSpacing: 1.5,
+    letterSpacing: letterSpacingValues[LetterSpacingToken.widest],
     color: CustomAppColors.gray3,
   );
+
+  /// Returns a TextTheme with all sizes scaled by [scale].
+  static TextTheme scaled(double scale) {
+    return TextTheme(
+      displayLarge: _scaleStyle(defaultStyle.displayLarge!, scale),
+      displayMedium: _scaleStyle(defaultStyle.displayMedium!, scale),
+      displaySmall: _scaleStyle(defaultStyle.displaySmall!, scale),
+      headlineLarge: _scaleStyle(defaultStyle.headlineLarge!, scale),
+      headlineMedium: _scaleStyle(defaultStyle.headlineMedium!, scale),
+      headlineSmall: _scaleStyle(defaultStyle.headlineSmall!, scale),
+      titleLarge: _scaleStyle(defaultStyle.titleLarge!, scale),
+      titleMedium: _scaleStyle(defaultStyle.titleMedium!, scale),
+      titleSmall: _scaleStyle(defaultStyle.titleSmall!, scale),
+      bodyLarge: _scaleStyle(defaultStyle.bodyLarge!, scale),
+      bodyMedium: _scaleStyle(defaultStyle.bodyMedium!, scale),
+      bodySmall: _scaleStyle(defaultStyle.bodySmall!, scale),
+      labelLarge: _scaleStyle(defaultStyle.labelLarge!, scale),
+      labelMedium: _scaleStyle(defaultStyle.labelMedium!, scale),
+      labelSmall: _scaleStyle(defaultStyle.labelSmall!, scale),
+    );
+  }
+
+  /// Returns dark TextTheme with all sizes scaled by [scale].
+  static TextTheme darkScaled(double scale) {
+    return TextTheme(
+      displayLarge: _scaleStyle(darkStyle.displayLarge!, scale),
+      displayMedium: _scaleStyle(darkStyle.displayMedium!, scale),
+      displaySmall: _scaleStyle(darkStyle.displaySmall!, scale),
+      headlineLarge: _scaleStyle(darkStyle.headlineLarge!, scale),
+      headlineMedium: _scaleStyle(darkStyle.headlineMedium!, scale),
+      headlineSmall: _scaleStyle(darkStyle.headlineSmall!, scale),
+      titleLarge: _scaleStyle(darkStyle.titleLarge!, scale),
+      titleMedium: _scaleStyle(darkStyle.titleMedium!, scale),
+      titleSmall: _scaleStyle(darkStyle.titleSmall!, scale),
+      bodyLarge: _scaleStyle(darkStyle.bodyLarge!, scale),
+      bodyMedium: _scaleStyle(darkStyle.bodyMedium!, scale),
+      bodySmall: _scaleStyle(darkStyle.bodySmall!, scale),
+      labelLarge: _scaleStyle(darkStyle.labelLarge!, scale),
+      labelMedium: _scaleStyle(darkStyle.labelMedium!, scale),
+      labelSmall: _scaleStyle(darkStyle.labelSmall!, scale),
+    );
+  }
+
+  static TextStyle _scaleStyle(TextStyle style, double scale) {
+    return style.copyWith(
+      fontSize: (style.fontSize ?? 14) * scale,
+      letterSpacing:
+          style.letterSpacing != null ? (style.letterSpacing! * scale) : null,
+    );
+  }
+
+  /// Returns custom TextStyle scaled by [scale].
+  static TextStyle scaleCustom(TextStyle style, double scale) =>
+      _scaleStyle(style, scale);
 }

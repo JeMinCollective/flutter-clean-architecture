@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:clean_architecture_template/common/extensions/responsive_extension.dart';
 import 'package:clean_architecture_template/common/styles/app_colors.dart';
+import 'package:clean_architecture_template/common/styles/shadow_tokens.dart';
 
 /// An elevated text field with shadow effect matching the Trackify design
 /// Usage:
@@ -29,6 +33,8 @@ class ElevatedInputField extends StatelessWidget {
   final bool autofocus;
   final String? initialValue;
   final InputDecoration? decoration;
+  final List<TextInputFormatter>? inputFormatters;
+  final Key? formFieldKey;
 
   const ElevatedInputField({
     super.key,
@@ -50,29 +56,20 @@ class ElevatedInputField extends StatelessWidget {
     this.autofocus = false,
     this.initialValue,
     this.decoration,
+    this.inputFormatters,
+    this.formFieldKey,
   });
 
   @override
   Widget build(BuildContext context) {
+    final scale = context.scaleFactor;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: CustomAppColors.gray1.withValues(alpha: 0.08),
-            offset: const Offset(0, 2),
-            blurRadius: 8,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: CustomAppColors.gray1.withValues(alpha: 0.04),
-            offset: const Offset(0, 1),
-            blurRadius: 2,
-            spreadRadius: 0,
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12 * scale),
+        boxShadow: AppShadowTokens.shadowMdScaled(scale),
       ),
       child: TextFormField(
+        key: formFieldKey,
         controller: controller,
         obscureText: obscureText,
         keyboardType: keyboardType,
@@ -86,9 +83,10 @@ class ElevatedInputField extends StatelessWidget {
         focusNode: focusNode,
         autofocus: autofocus,
         initialValue: initialValue,
-        style: const TextStyle(
+        inputFormatters: inputFormatters,
+        style: TextStyle(
           fontFamily: 'Figtree',
-          fontSize: 16,
+          fontSize: 16 * scale,
           fontWeight: FontWeight.w400,
           color: CustomAppColors.gray1,
         ),
@@ -244,6 +242,7 @@ class ElevatedSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = context.scaleFactor;
     return ElevatedInputField(
       controller: controller,
       hintText: hintText ?? 'Search...',
@@ -268,7 +267,7 @@ class ElevatedSearchField extends StatelessWidget {
         filled: true,
         fillColor: CustomAppColors.gray6,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12 * scale),
           borderSide: BorderSide.none,
         ),
       ),

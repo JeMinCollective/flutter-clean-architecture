@@ -93,6 +93,8 @@ const fontWeightValues = {
   FontWeightToken.black: FontWeight.w900,
 };
 
+/// Letter spacing tokens from Figma Design System (Typography Tokens).
+/// Tighter=-0.8, Tight=-0.4, Normal=0, Wide=0.4, Wider=0.8, Widest=1.6
 const letterSpacingValues = {
   LetterSpacingToken.tighter: -0.8,
   LetterSpacingToken.tight: -0.4,

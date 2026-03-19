@@ -1,6 +1,8 @@
 // Names tend to be determined from http://chir.ag/projects/name-that-color
-// For token-based design systems, use ColourTokens from common/styles/tokens/tokens.dart
+// Mapped to Figma Design System via ColourTokens.
 import 'package:flutter/material.dart';
+
+import 'package:clean_architecture_template/common/styles/tokens/colour_tokens.dart';
 
 extension BuildContextColorExtension on BuildContext {
   AppColors get colors => Theme.of(this).extension<AppColors>()!;
@@ -9,68 +11,37 @@ extension BuildContextColorExtension on BuildContext {
 class CustomAppColors {
   const CustomAppColors._();
 
-  static const primary = Color(0xFF1976D2);
-
-  static const primaryVariant = Color(0xFF1565C0);
-
-  static const secondary = Color(0xFF42A5F5);
-
-  static const secondaryVariant = Color(0xFF2196F3);
-
-  static const white = Color(0xFFFFFFFF);
-
-  static const primaryBackground = Color(0xFFFAFAFA);
-
-  static const secondaryBackground = Color(0xFFE3F2FD);
-
-  static const primaryText = Color(0xFF2D3142);
-
-  static const secondaryText = Color(0xFF6B6E82);
-
-  static const gray1 = Color(0xFF2D3142);
-
-  static const gray2 = Color(0xFF6B6E82);
-
-  static const gray3 = Color(0xFF9CA0B3);
-
-  static const gray4 = Color(0xFFD1D4E0);
-
-  static const gray5 = Color(0xFFE8EAF0);
-
-  static const gray6 = Color(0xFFF5F6FA);
-
-  static const error = Color(0xFFE85D75);
-
-  static const alert = Color(0xFFD9455A);
-
-  static const success = Color(0xFF4CAF50);
-
-  static const warning = Color(0xFFFFB74D);
-
-  static const darkScaffold = Color(0xFF1A1D2E);
-
-  static const darkPrimary = Color(0xFF2D3142);
-
-  static const darkCards = Color(0xFF3F4356);
-
-  // Additional theme colors
-  static const tertiary = Color(0xFF64B5F6);
-
-  static const tertiaryLight = Color(0xFF90CAF9);
-
-  static const tertiaryDark = Color(0xFF42A5F5);
-
-  static const primaryContainerLight = Color(0xFFBBDEFB);
-
-  static const tertiaryContainer = Color(0xFFE1F5FE);
-
-  static const errorContainer = Color(0xFFFFEBEE);
-
-  static const errorContainerDark = Color(0xFF8A3A3A);
-
-  static const errorDark = Color(0xFFEF9A9A);
-
-  static const onErrorContainer = Color(0xFF5A1F24);
+  static const primary = ColourTokens.primary500;
+  static const primaryVariant = ColourTokens.primary600;
+  static const secondary = ColourTokens.accent500;
+  static const secondaryVariant = ColourTokens.accent400;
+  static const white = ColourTokens.white;
+  static const primaryBackground = ColourTokens.gray50;
+  static const secondaryBackground = ColourTokens.primary50;
+  static const primaryText = ColourTokens.gray950;
+  static const secondaryText = ColourTokens.gray700;
+  static const gray1 = ColourTokens.gray900;
+  static const gray2 = ColourTokens.gray700;
+  static const gray3 = ColourTokens.gray400;
+  static const gray4 = ColourTokens.gray300;
+  static const gray5 = ColourTokens.gray100;
+  static const gray6 = ColourTokens.gray50;
+  static const error = ColourTokens.error500;
+  static const alert = ColourTokens.error600;
+  static const success = ColourTokens.success500;
+  static const warning = ColourTokens.warning500;
+  static const darkScaffold = ColourTokens.gray950;
+  static const darkPrimary = ColourTokens.gray900;
+  static const darkCards = ColourTokens.gray800;
+  static const tertiary = ColourTokens.accent300;
+  static const tertiaryLight = ColourTokens.accent200;
+  static const tertiaryDark = ColourTokens.accent400;
+  static const primaryContainerLight = ColourTokens.primary50;
+  static const tertiaryContainer = ColourTokens.primary50;
+  static const errorContainer = ColourTokens.error50;
+  static const errorContainerDark = ColourTokens.error900;
+  static const errorDark = ColourTokens.error300;
+  static const onErrorContainer = ColourTokens.error700;
 }
 
 class AppColors extends ThemeExtension<AppColors> {
@@ -103,59 +74,59 @@ class AppColors extends ThemeExtension<AppColors> {
 
   factory AppColors.defaultStyle() {
     return const AppColors(
-      text: Color(0xFF2D3142),
-      secondaryText: Color(0xFF6B6E82),
-      accentText: Color(0xFFD1D4E0),
-      textOnColour: Color(0xFFFFFFFF),
-      link: Color(0xFF5B67CA),
-      secondaryTextOnColour: Color(0xFFF5F4F8),
-      placeholder: Color(0xFF9CA0B3),
-      disabledText: Color(0xFFD1D4E0),
-      successText: Color(0xFF388E3C),
-      attentionText: Color(0xFFEF6C00),
-      warningText: Color(0xFFE85D75),
-      neutralText: Color(0xFF6B6E82),
-      tappable: Color(0xFF5B67CA),
-      accent: Color(0xFFE8EAF0),
-      foreground: Color(0xFFFFFFFF),
-      background: Color(0xFFF5F4F8),
-      divider: Color(0xFFD1D4E0),
-      disabled: Color(0xFFE8EAF0),
-      success: Color(0xFF4CAF50),
-      attention: Color(0xFFFFB74D),
-      warning: Color(0xFFE85D75),
-      neutral: Color(0xFF9CA0B3),
-      information: Color(0xFF5B67CA),
-      scrim: Color(0x99000000),
+      text: ColourTokens.gray950,
+      secondaryText: ColourTokens.gray700,
+      accentText: ColourTokens.gray300,
+      textOnColour: ColourTokens.white,
+      link: ColourTokens.primary600,
+      secondaryTextOnColour: ColourTokens.gray50,
+      placeholder: ColourTokens.gray400,
+      disabledText: ColourTokens.gray300,
+      successText: ColourTokens.success700,
+      attentionText: ColourTokens.warning600,
+      warningText: ColourTokens.error500,
+      neutralText: ColourTokens.gray700,
+      tappable: ColourTokens.primary600,
+      accent: ColourTokens.gray100,
+      foreground: ColourTokens.white,
+      background: ColourTokens.gray50,
+      divider: ColourTokens.gray100,
+      disabled: ColourTokens.gray100,
+      success: ColourTokens.success500,
+      attention: ColourTokens.warning500,
+      warning: ColourTokens.error500,
+      neutral: ColourTokens.gray400,
+      information: ColourTokens.primary500,
+      scrim: ColourTokens.black24,
     );
   }
 
   factory AppColors.dark() {
     return const AppColors(
-      text: Color(0xFFF5F6FA),
-      secondaryText: Color(0xFFD1D4E0),
-      accentText: Color(0xFFE8EAF0),
-      textOnColour: Color(0xFF1A1D2E),
-      link: Color(0xFF8B95E8),
-      secondaryTextOnColour: Color(0xFF2D3142),
-      placeholder: Color(0xFF9CA0B3),
-      disabledText: Color(0xFF6B6E82),
-      successText: Color(0xFF81C784),
-      attentionText: Color(0xFFFFCC80),
-      warningText: Color(0xFFEF9A9A),
-      neutralText: Color(0xFFD1D4E0),
-      tappable: Color(0xFF8B95E8),
-      accent: Color(0xFF6B6E82),
-      foreground: Color(0xFF3F4356),
-      background: Color(0xFF1A1D2E),
-      divider: Color(0xFF6B6E82),
-      disabled: Color(0xFF3F4356),
-      success: Color(0xFF81C784),
-      attention: Color(0xFFFFCC80),
-      warning: Color(0xFFEF9A9A),
-      neutral: Color(0xFF9CA0B3),
-      information: Color(0xFF8B95E8),
-      scrim: Color(0xB3000000),
+      text: ColourTokens.gray50,
+      secondaryText: ColourTokens.gray300,
+      accentText: ColourTokens.gray100,
+      textOnColour: ColourTokens.gray950,
+      link: ColourTokens.accent300,
+      secondaryTextOnColour: ColourTokens.gray900,
+      placeholder: ColourTokens.gray400,
+      disabledText: ColourTokens.gray600,
+      successText: ColourTokens.success300,
+      attentionText: ColourTokens.warning300,
+      warningText: ColourTokens.error300,
+      neutralText: ColourTokens.gray300,
+      tappable: ColourTokens.accent300,
+      accent: ColourTokens.gray600,
+      foreground: ColourTokens.gray800,
+      background: ColourTokens.gray950,
+      divider: ColourTokens.gray600,
+      disabled: ColourTokens.gray800,
+      success: ColourTokens.success300,
+      attention: ColourTokens.warning300,
+      warning: ColourTokens.error300,
+      neutral: ColourTokens.gray400,
+      information: ColourTokens.accent300,
+      scrim: ColourTokens.black72,
     );
   }
 

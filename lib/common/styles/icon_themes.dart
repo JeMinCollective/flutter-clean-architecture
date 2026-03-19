@@ -158,4 +158,32 @@ class IconThemes {
       opacity: opacity,
     );
   }
+
+  /// Returns default icon theme with size scaled by [scale].
+  static IconThemeData scaled(double scale) {
+    return IconThemeData(
+      color: CustomAppColors.gray2,
+      size: iconSizeLarge * scale,
+    );
+  }
+
+  /// Returns dark icon theme with size scaled by [scale].
+  static IconThemeData darkScaled(double scale) {
+    return IconThemeData(
+      color: CustomAppColors.gray5,
+      size: iconSizeLarge * scale,
+    );
+  }
+
+  /// Returns icon theme with custom color and scaled size.
+  static IconThemeData scaledCustom({
+    required double scale,
+    Color? color,
+    double? baseSize,
+  }) {
+    return IconThemeData(
+      color: color ?? CustomAppColors.gray2,
+      size: (baseSize ?? iconSizeLarge) * scale,
+    );
+  }
 }

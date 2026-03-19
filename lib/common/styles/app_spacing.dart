@@ -57,27 +57,77 @@ class AppSpacing {
     double top = 0,
     double right = 0,
     double bottom = 0,
-  }) =>
-      EdgeInsets.only(
-        left: left,
-        top: top,
-        right: right,
-        bottom: bottom,
-      );
+  }) => EdgeInsets.only(left: left, top: top, right: right, bottom: bottom);
 
   /// Scale factor for tablet (1.25) and desktop (1.25). Mobile stays 1.0.
+  /// Deprecated: Use context.scaleFactor for proportional scaling instead.
   static double _scaleFactor(BuildContext context) {
-    return context.isTablet || context.isDesktop ? 1.25 : 1.0;
+    return context.isTablet || context.isDesktop ? 1.10 : 1.0;
   }
 
   /// Returns [value] scaled for tablet/desktop. Use for responsive spacing.
+  /// Deprecated: Prefer [scaleValue] with context.scaleFactor for proportional scaling.
   static double scale(BuildContext context, double value) {
     return value * _scaleFactor(context);
   }
 
+  /// Returns [value] scaled by [scaleFactor] (from context.scaleFactor).
+  /// [scaleMultiplier] applies only on tablet/desktop (ignored on mobile).
+  static double scaleValue(
+    BuildContext context,
+    double value, {
+    double scaleMultiplier = 1.0,
+  }) {
+    final base = value * context.scaleFactor;
+    if (context.isTablet || context.isDesktop) {
+      return base * scaleMultiplier;
+    }
+    return base;
+  }
+
+  /// Returns EdgeInsets.all with proportional scaling.
+  static EdgeInsets allScaled(BuildContext context, double value) {
+    return EdgeInsets.all(scaleValue(context, value));
+  }
+
+  /// Returns symmetric horizontal padding with proportional scaling.
+  static EdgeInsets horizontalScaled(BuildContext context, double value) {
+    return EdgeInsets.symmetric(horizontal: scaleValue(context, value));
+  }
+
+  /// Returns symmetric vertical padding with proportional scaling.
+  static EdgeInsets verticalScaled(BuildContext context, double value) {
+    return EdgeInsets.symmetric(vertical: scaleValue(context, value));
+  }
+
+  /// Returns EdgeInsets.only with proportional scaling.
+  static EdgeInsets onlyScaled(
+    BuildContext context, {
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
+    return EdgeInsets.only(
+      left: left * context.scaleFactor,
+      top: top * context.scaleFactor,
+      right: right * context.scaleFactor,
+      bottom: bottom * context.scaleFactor,
+    );
+  }
+
   /// Returns EdgeInsets.all with responsive scaling on tablet.
-  static EdgeInsets allResponsive(BuildContext context, double value) {
-    return EdgeInsets.all(scale(context, value));
+  /// [scaleMultiplier] applies only on tablet/desktop (ignored on mobile).
+  static EdgeInsets allResponsive(
+    BuildContext context,
+    double value, {
+    double scaleMultiplier = 1.0,
+  }) {
+    final scaled = scale(context, value);
+    if (context.isTablet || context.isDesktop) {
+      return EdgeInsets.all(scaled * scaleMultiplier);
+    }
+    return EdgeInsets.all(scaled);
   }
 
   /// Returns symmetric horizontal padding with responsive scaling.

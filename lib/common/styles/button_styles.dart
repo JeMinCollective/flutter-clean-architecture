@@ -1,9 +1,51 @@
 import 'package:flutter/material.dart';
+
 import 'package:clean_architecture_template/common/styles/app_colors.dart';
 import 'package:clean_architecture_template/common/styles/text_themes.dart';
 
 class ButtonStyles {
   const ButtonStyles._();
+
+  /// Returns default button style with dimensions scaled by [scale].
+  static ButtonStyle scaled(double scale) {
+    return ButtonStyle(
+      padding: WidgetStateProperty.all(
+        EdgeInsets.symmetric(
+          horizontal: 27 * scale,
+          vertical: 16 * scale,
+        ),
+      ),
+      textStyle: WidgetStateProperty.all(
+        TextThemes.scaleCustom(TextThemes.defaultStyle.labelLarge!, scale),
+      ),
+      foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+        return CustomAppColors.white;
+      }),
+      minimumSize: WidgetStateProperty.all(
+        Size(96 * scale, 56 * scale),
+      ),
+      backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return AppColors.defaultStyle().disabled!;
+        }
+        return CustomAppColors.primary;
+      }),
+      overlayColor: WidgetStateProperty.resolveWith<Color>((states) {
+        return CustomAppColors.primaryVariant;
+      }),
+      shape: WidgetStateProperty.resolveWith<OutlinedBorder>((states) {
+        return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28 * scale),
+        );
+      }),
+      elevation: WidgetStateProperty.resolveWith<double>((states) {
+        if (states.contains(WidgetState.pressed)) {
+          return 4 * scale;
+        }
+        return 2 * scale;
+      }),
+    );
+  }
 
   static ButtonStyle defaultStyle = ButtonStyle(
     padding: WidgetStateProperty.resolveWith<EdgeInsets>((states) {
@@ -110,4 +152,27 @@ class ButtonStyles {
       );
     }),
   );
+
+  /// Returns white button style scaled by [scale].
+  static ButtonStyle whiteScaled(double scale) {
+    return scaled(scale).copyWith(
+      foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+        return CustomAppColors.gray1;
+      }),
+      backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return CustomAppColors.gray4;
+        }
+        return CustomAppColors.gray6;
+      }),
+      overlayColor: WidgetStateProperty.resolveWith<Color>((states) {
+        return CustomAppColors.gray5;
+      }),
+      shape: WidgetStateProperty.resolveWith<OutlinedBorder>((states) {
+        return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28 * scale),
+        );
+      }),
+    );
+  }
 }

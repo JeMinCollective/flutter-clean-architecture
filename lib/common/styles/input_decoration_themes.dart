@@ -229,4 +229,152 @@ class InputDecorationThemes {
               : null,
     );
   }
+
+  /// Returns default input decoration theme with dimensions scaled by [scale].
+  static InputDecorationTheme scaled(double scale) {
+    final borderRadius = _borderRadius * scale;
+    final borderWidth = _borderWidth * scale;
+    final focusedBorderWidth = _focusedBorderWidth * scale;
+    return InputDecorationTheme(
+      fillColor: CustomAppColors.white,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: 16 * scale,
+        vertical: 18 * scale,
+      ),
+      iconColor: CustomAppColors.gray2,
+      prefixIconColor: CustomAppColors.gray2,
+      suffixIconColor: CustomAppColors.gray2,
+      labelStyle: TextThemes.scaleCustom(
+        TextThemes.inputLabel.copyWith(color: CustomAppColors.gray2),
+        scale,
+      ),
+      floatingLabelStyle: TextThemes.scaleCustom(
+        TextThemes.inputLabel.copyWith(color: CustomAppColors.gray2),
+        scale,
+      ),
+      hintStyle: TextThemes.scaleCustom(TextThemes.placeholder, scale),
+      helperStyle: TextStyle(
+        fontFamily: 'Figtree',
+        fontSize: 12 * scale,
+        color: CustomAppColors.gray3,
+      ),
+      errorStyle: TextStyle(
+        fontFamily: 'Figtree',
+        fontSize: 12 * scale,
+        color: CustomAppColors.error,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.primary,
+          width: focusedBorderWidth,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.error,
+          width: borderWidth,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.error,
+          width: focusedBorderWidth,
+        ),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide.none,
+      ),
+      constraints: BoxConstraints(minHeight: 56 * scale),
+    );
+  }
+
+  /// Returns dark input decoration theme with dimensions scaled by [scale].
+  static InputDecorationTheme darkScaled(double scale) {
+    final borderRadius = _borderRadius * scale;
+    final borderWidth = _borderWidth * scale;
+    final focusedBorderWidth = _focusedBorderWidth * scale;
+    return InputDecorationTheme(
+      fillColor: CustomAppColors.darkCards,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: 16 * scale,
+        vertical: 18 * scale,
+      ),
+      iconColor: CustomAppColors.gray4,
+      prefixIconColor: CustomAppColors.gray4,
+      suffixIconColor: CustomAppColors.gray4,
+      labelStyle: TextThemes.scaleCustom(
+        TextThemes.inputLabel.copyWith(color: CustomAppColors.gray4),
+        scale,
+      ),
+      floatingLabelStyle: TextThemes.scaleCustom(
+        TextThemes.inputLabel.copyWith(color: CustomAppColors.gray4),
+        scale,
+      ),
+      hintStyle: TextThemes.scaleCustom(
+        TextThemes.placeholder.copyWith(color: CustomAppColors.gray4),
+        scale,
+      ),
+      helperStyle: TextStyle(
+        fontFamily: 'Figtree',
+        fontSize: 12 * scale,
+        color: CustomAppColors.gray4,
+      ),
+      errorStyle: TextStyle(
+        fontFamily: 'Figtree',
+        fontSize: 12 * scale,
+        color: CustomAppColors.errorDark,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(color: CustomAppColors.gray3, width: borderWidth),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(color: CustomAppColors.gray3, width: borderWidth),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.primary,
+          width: focusedBorderWidth,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.errorDark,
+          width: borderWidth,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.errorDark,
+          width: focusedBorderWidth,
+        ),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
+        borderSide: BorderSide(
+          color: CustomAppColors.gray4,
+          width: borderWidth,
+        ),
+      ),
+      constraints: BoxConstraints(minHeight: 56 * scale),
+    );
+  }
 }
