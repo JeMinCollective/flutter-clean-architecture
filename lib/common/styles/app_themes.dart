@@ -53,10 +53,7 @@ class AppThemes {
     inputDecorationTheme: InputDecorationThemes.defaultStyle,
     floatingActionButtonTheme: FloatingActionButtonThemes.defaultStyle,
     listTileTheme: ListTileThemes.defaultStyle,
-    extensions: [
-      AppColors.defaultStyle(),
-      AppTextStyles.light(1.0),
-    ],
+    extensions: [AppColors.defaultStyle(), AppTextStyles.light(1.0)],
     bottomAppBarTheme: const BottomAppBarThemeData(
       color: CustomAppColors.gray1,
     ),
@@ -90,10 +87,7 @@ class AppThemes {
     iconTheme: IconThemes.darkStyle,
     appBarTheme: AppBarThemes.darkStyle,
     inputDecorationTheme: InputDecorationThemes.darkStyle,
-    extensions: [
-      AppColors.dark(),
-      AppTextStyles.dark(1.0),
-    ],
+    extensions: [AppColors.dark(), AppTextStyles.dark(1.0)],
     colorScheme: ColorSchemes.darkStyle.copyWith(brightness: Brightness.dark),
   );
 }

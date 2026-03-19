@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:clean_architecture_template/common/extensions/responsive_extension.dart';
 import 'package:clean_architecture_template/common/styles/app_colors.dart';
+import 'package:clean_architecture_template/common/styles/shadow_tokens.dart';
 
 /// An elevated text field with shadow effect matching the Trackify design
 /// Usage:
@@ -65,20 +66,7 @@ class ElevatedInputField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12 * scale),
-        boxShadow: [
-          BoxShadow(
-            color: CustomAppColors.gray1.withValues(alpha: 0.08),
-            offset: Offset(0, 2 * scale),
-            blurRadius: 8 * scale,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: CustomAppColors.gray1.withValues(alpha: 0.04),
-            offset: Offset(0, 1 * scale),
-            blurRadius: 2 * scale,
-            spreadRadius: 0,
-          ),
-        ],
+        boxShadow: AppShadowTokens.shadowMdScaled(scale),
       ),
       child: TextFormField(
         key: formFieldKey,
